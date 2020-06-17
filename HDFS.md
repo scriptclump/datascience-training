@@ -1,3 +1,4 @@
+
 # Hadoop Distribution File System:
 NameNode: MetaData of the file
 DataNode: Content of the actual file
@@ -13,8 +14,11 @@ Client->NameNode->Temp entry on NameNode->Write on NameNode if is acting as Data
 
 ## HDFS Backup & failover
 NameNode stores at Disk & RAM. Disk content two files (Ondemand)Namespace image & Edit logs.
+
 To make the namenode resilient, HDFS keep two namenodes main & standby. Zookeeper helps to switch from one to another.
+
 In HDFS Federation, we have multiple namenodes containing parts of metadata.
+
 Mount table is not a service. It is a file kept along with and referred from the HDFS configuration file. The client reads mount table to find out which folders belong to which namenode.
 
 ## Ambari
@@ -25,7 +29,9 @@ Hue is required to upload the files on HDFS. HDFS file permission is same as Uni
 
 ## Copy the file from local to HDFS using console
 hadoop fs -copyFromLocal FILEPATH or
+
 hadoop fs -put FILEPATH
+
 hadoop fs -cat FILEPATH
 
 ## Where are the blocks
@@ -33,5 +39,7 @@ hdfs fsck -block -location -rack -files FILEPATH
 
 ## Change the replication factor of file
 hadoop fs -setrep 1 FILEPATH 
+
 hadoop fs -setrep -w 1 FILEPATH (Wait till the process)
+
 hadoop fs -setrep -w -R 1 FILEPATH (Recursive)
